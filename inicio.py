@@ -44,6 +44,9 @@ def telaInicio():
             controleInicio(resp)
 
 
+    telaInicio()
+
+
 def controleInicio(resp):
 
     '''
@@ -76,7 +79,7 @@ def controleInicio(resp):
 
         return_cadastro = telaCadastro()
 
-        if return_cadastro == False:
-            sairBanco()
+        if return_cadastro == True:
+            controleInicio(1)
 
         telaInicio()

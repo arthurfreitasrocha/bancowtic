@@ -32,6 +32,17 @@ def tratarNum(num):
 
 
 def tratarCPF(cpf):
+    
+    '''
+    VERIFICA SE O CPF É VÁLIDO (INCOMPLETO)
+    '''
+
+    if cpf.isalpha() == True:
+        print('\nPOR FAVOR INFORME UM CPF VÁLIDO!\n')
+        os.system('pause')
+
+        return False
+
     return True
 
 

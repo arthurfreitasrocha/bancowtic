@@ -65,6 +65,8 @@ def telaCadastro():
             print('\nCADASTRO REALIZADO COM SUCESSO!\n')
             os.system('pause')
 
+            return True
+
         elif return_cadastro == False:
             print('\nVERIFIQUE SEUS DADOS E TENTE NOVAMENTE\n')
             os.system('pause')
@@ -84,10 +86,17 @@ def validarInformacoes(tipo_informacao, informacao):
 
         return return_informacao
 
+
     elif tipo_informacao == 'idade':
         return_informacao = tratarNum(informacao)
 
-        return return_informacao
+        if return_informacao == True:
+
+            informacao = int(informacao)
+
+            if informacao < 18:
+                return_informacao = False
+
 
     elif tipo_informacao == 'cpf':
         return_informacao = tratarCPF(informacao)
@@ -96,10 +105,10 @@ def validarInformacoes(tipo_informacao, informacao):
 
 
     if return_informacao == False:
-        print('\nVERIFIQUE SEUS DADOS E TENTE NOVAMENTE\n')
+        print('\nENTRADA INVÁLIADA!\n')
         os.system('pause')
 
-        telaCadastro()
+        return False
 
 
 def cadastrarUsuario(nome, idade, login, senha):
