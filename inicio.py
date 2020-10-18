@@ -80,6 +80,6 @@ def controleInicio(resp):
         return_cadastro = telaCadastro()
 
         if return_cadastro == True:
-            controleInicio(1)
+            telaInicio()
 
         telaInicio()

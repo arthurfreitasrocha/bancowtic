@@ -111,13 +111,30 @@ def validarInformacoes(tipo_informacao, informacao):
         return False
 
 
-def cadastrarUsuario(nome, idade, login, senha):
+def cadastrarUsuario(nome_arquivos, idade, login, senha):
 
     '''
     CRIA O BANCO DE DADOS DO USUÁRIO
     '''
 
     diretorio_atual = capturarDiretorioAtual()
+
+    '''
+    VERIFICA SE A PASTA "usuarios" JA FOI CRIADA
+    '''
+
+    arquivos_no_diretorio = os.listdir(diretorio_atual)
+
+    pasta_usuario_existe = False
+    for nome_arquivos in arquivos_no_diretorio:
+
+        if nome_arquivos == 'usuarios':
+            pasta_usuario_existe = True
+
+    if pasta_usuario_existe == False:
+        os.mkdir('usuarios')
+
+
     diretorio_usuarios = f'{diretorio_atual}\\usuarios'
 
     usuarios = os.listdir(diretorio_usuarios)
@@ -138,7 +155,7 @@ def cadastrarUsuario(nome, idade, login, senha):
     os.mkdir(pasta_usuario)
 
     informacoes_genericas = ['nome', 'idade', 'login', 'senha']
-    informacoes_usuario = [nome, idade, login, senha]
+    informacoes_usuario = [nome_arquivos, idade, login, senha]
 
     contador = 0
     for informacao in informacoes_usuario:
