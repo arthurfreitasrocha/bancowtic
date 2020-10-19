@@ -1,5 +1,5 @@
 from confirmar_informacoes import telaConfirmarInformacoes
-from diretorio_atual import capturarDiretorioAtual
+from diretorio_atual import capturarDiretorioAtual, capturarDiretorioUsuario
 from tratamento import tratarAlpha, tratarNum, tratarCPF
 
 import os
@@ -111,7 +111,7 @@ def validarInformacoes(tipo_informacao, informacao):
         return False
 
 
-def cadastrarUsuario(nome_arquivos, idade, login, senha):
+def cadastrarUsuario(nome, idade, login, senha):
 
     '''
     CRIA O BANCO DE DADOS DO USUÁRIO
@@ -135,10 +135,14 @@ def cadastrarUsuario(nome_arquivos, idade, login, senha):
         os.mkdir('usuarios')
 
 
-    diretorio_usuarios = f'{diretorio_atual}\\usuarios'
+    diretorio_pasta_usuarios = f'{diretorio_atual}\\usuarios'
+    usuarios = os.listdir(diretorio_pasta_usuarios)
 
-    usuarios = os.listdir(diretorio_usuarios)
 
+    '''
+    VERIFICA SE O USUÁRIO QUE ESTÁ TENTANDO SE CADASTRAR
+    JÁ EXISTE NO BANCO DE DADOS
+    '''
 
     usuario_existente = False
     for usuario in usuarios:
@@ -146,21 +150,26 @@ def cadastrarUsuario(nome_arquivos, idade, login, senha):
         if usuario == login:
             usuario_existente = True
 
-
     if usuario_existente == True:
         return False
 
 
-    pasta_usuario = f'{diretorio_usuarios}\\{login}'
+    '''
+    CRIA A PASTA DO USUÁRIO, E DENTRO DELA ESTARÃO SUAS
+    INFORMAÇÕES ESCRITAS EM VÁRIOS BLOCOS DE NOTAS
+    '''
+
+    pasta_usuario = capturarDiretorioUsuario(login)
     os.mkdir(pasta_usuario)
 
     informacoes_genericas = ['nome', 'idade', 'login', 'senha']
-    informacoes_usuario = [nome_arquivos, idade, login, senha]
+    informacoes_usuario = [nome, idade, login, senha]
 
     contador = 0
     for informacao in informacoes_usuario:
 
-        diretorio_arquivos = f'{diretorio_usuarios}\\{login}\\{informacoes_genericas[contador]}.txt'
+        diretorio_arquivos = capturarDiretorioUsuario(login)
+        diretorio_arquivos += f'\\{informacoes_genericas[contador]}.txt' # 'C:\Users\arthu\Documents\GitHub\bancowtic\usuarios\123\nome.txt'
 
         arquivo = open(diretorio_arquivos, 'w')
         arquivo.write(informacao)

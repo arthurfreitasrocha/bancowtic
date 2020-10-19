@@ -19,12 +19,16 @@ def telaLogin():
     login = input('LOGIN: ')
 
     if login.lower() == 'sair':
-        return False
+
+        informacoes = [False, 0]
+        return informacoes
 
     senha = input('SENHA: ')
 
     if senha.lower() == 'sair':
-        return False
+
+        informacoes = [False, 0]
+        return informacoes
 
 
     return_confirmar = telaConfirmarInformacoes('login', login, senha)
@@ -47,8 +51,10 @@ def telaLogin():
             return_validacao = validarLogin(login, senha)
 
             if return_validacao == True:
+
                 print('\nLOGADO COM SUCESSO!\n')
                 os.system('pause')
+                print(login)
 
                 informacoes = [True, login]
 

@@ -4,6 +4,8 @@ import os
 
 def telaOperacoesBancarias():
 
+    os.system('cls')
+
     print('\nBANCO WTIC - [OPERAÇÕES BANCÁRIAS]\n')
 
     print('POR FAVOR SELECIONE UMA OPÇÃO OU DIGITE "sair" PARA SAIR\n')

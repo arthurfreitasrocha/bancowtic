@@ -17,6 +17,7 @@ def capturarDiretorioUsuario(login):
     CAPTURA O DIRETÓRIO DO USUÁRIO
     '''
 
-    diretorio_usuario = f'usuarios\\{login}'
+    diretorio_atual = capturarDiretorioAtual()
+    diretorio_usuario = f'{diretorio_atual}\\usuarios\\{login}'
 
     return diretorio_usuario

@@ -71,9 +71,6 @@ def controleInicio(resp):
             login = return_login[1]
             telaUsuario(login)
 
-        elif return_login == False:
-            telaInicio()
-
 
     elif resp == 2:
 

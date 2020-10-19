@@ -26,10 +26,10 @@ def telaUsuario(login):
     resp = input('>>> ')
 
     if resp.lower() == 'sair':
-        return False
+        sairBanco()
+
 
     return_tratamento = tratarNum(resp)
-
 
     '''
     PARTE LÓGICA DA TELA USUÁRIO
@@ -41,7 +41,9 @@ def telaUsuario(login):
 
         if return_tratamento == True:
 
-            controleUsuario(login)
+            controleUsuario(resp)
+
+    telaUsuario(login)
 
 
 def capturarInformacoesUsuario(login):
@@ -58,7 +60,7 @@ def capturarInformacoesUsuario(login):
 
     for nome_arquivo in nome_arquivos:
 
-        diretorio_arquivo = f'{diretorio_usuario}\\{nome_arquivo}'
+        diretorio_arquivo = f'{diretorio_usuario}\\{nome_arquivo}' # 'C:\Users\arthu\Documents\GitHub\bancowtic\usuarios\123\nome.txt'
 
         arquivo = open(diretorio_arquivo, 'r')
         informacao = arquivo.read()
@@ -69,7 +71,7 @@ def capturarInformacoesUsuario(login):
     return informacoes_usuario
 
 
-def controleUsuario(login):
+def controleUsuario(opcao):
 
     '''
     FUNÇÃO RESPONSÁVEL PELO CONTROLE DE FLUXO
@@ -84,13 +86,8 @@ def controleUsuario(login):
     O USUÁRIO SERÁ REDIRECIONADO PARA A TELA CONFIGURAÇÕES DO USUÁRIO
     '''
 
-    return_usuario = telaUsuario(login)
-
-    if return_usuario == False:
-        sairBanco()
-
-    elif return_usuario == 1:
+    if opcao == 1:
         return_operacoes = telaOperacoesBancarias()
 
-    elif return_usuario == 2:
+    elif opcao == 2:
         return_configuracoes = telaConfiguracoesUsuario()

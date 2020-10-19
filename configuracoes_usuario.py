@@ -4,6 +4,8 @@ import os
 
 def telaConfiguracoesUsuario():
 
+    os.system('cls')
+
     print('\nBANCO WTIC - [CONFIGURAÇÕES DO USUÁRIO]\n')
 
     print('POR FAVOR SELECIONE UMA OPÇÃO OU DIGITE "sair" PARA SAIR\n')

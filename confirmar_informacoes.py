@@ -23,10 +23,9 @@ def telaConfirmarInformacoes(tipo_operacao, login, senha, **kws):
         return_resp = tratarAlpha(resp)
 
         if return_resp == True:
-            return True
 
-        else:
-            return False
+            if resp == 's':
+                return True
 
 
     elif tipo_operacao == 'cadastro':
@@ -48,7 +47,6 @@ def telaConfirmarInformacoes(tipo_operacao, login, senha, **kws):
         return_resp = tratarAlpha(resp)
 
         if return_resp == True:
-            return True
 
-        else:
-            return False
+            if resp == 's':
+                return True
