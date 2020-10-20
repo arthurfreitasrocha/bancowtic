@@ -1,3 +1,4 @@
+from encerrar_conta import telaEncerrarConta
 from tratamento import tratarNum, tratarOpcao
 from alterar_informacoes_pessoais import telaAlterarInformacoesPessoais
 
@@ -49,4 +50,7 @@ def controleConfiguracoesUsuario(opcao):
     '''
 
     if opcao == 1:
-        return_informacoes_pessoais = 
+        return_informacoes_pessoais = telaAlterarInformacoesPessoais()
+
+    elif opcao == 2:
+        return_encerrar_conta = telaEncerrarConta()

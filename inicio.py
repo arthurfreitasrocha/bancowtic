@@ -65,6 +65,7 @@ def controleInicio(resp):
     if resp == 1:
 
         return_login = telaLogin()
+        print(return_login)
 
         if return_login[0] == True:
 
