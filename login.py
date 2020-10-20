@@ -55,7 +55,6 @@ def telaLogin():
 
                 print('\nLOGADO COM SUCESSO!\n')
                 os.system('pause')
-                print(login)
 
                 informacoes = [True, login]
 

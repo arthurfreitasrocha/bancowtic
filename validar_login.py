@@ -50,5 +50,4 @@ def validarLogin(login, senha):
             return False
 
     else:
-        print('aaaaaaa')
         return False

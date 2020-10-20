@@ -28,7 +28,6 @@ def telaEncerrarConta():
 
 
     return_validacao = validarLogin(login, senha)
-    print(return_validacao)
 
     if return_validacao == True:
         controleEncerrarConta(login)
@@ -43,7 +42,7 @@ def telaEncerrarConta():
 
 def controleEncerrarConta(login):
 
-    informacoes_usuario = capturarInformacoesUsuario()
+    informacoes_usuario = capturarInformacoesUsuario(login)
 
     nome = informacoes_usuario[0]
 
@@ -51,7 +50,7 @@ def controleEncerrarConta(login):
 
     print('\nBANCO WTIC - [CONFIGURAÇÕES DO USUÁRIO -> ENCERRAR CONTA]\n')
 
-    print(f'({nome}) TEM CERTEZA QUE VOCÊ DESEJA EXCLUIR SUA CONTA?\n\
+    print(f'({nome.title()}) TEM CERTEZA QUE VOCÊ DESEJA EXCLUIR SUA CONTA?\n\
         ESSA AÇÃO NÃO PODERÁ SER DESFEITA. [S/N]\n')
 
     resp = input('>>> ')
@@ -66,7 +65,7 @@ def controleEncerrarConta(login):
         if return_resp == True:
 
             diretorio_usuario = capturarDiretorioUsuario(login)
-            os.mkdir(diretorio_usuario)
+            os.removedirs(diretorio_usuario)
 
             print('CONTA EXCLUÍDA COM SUCESSO.\n')
             os.system('pause')
