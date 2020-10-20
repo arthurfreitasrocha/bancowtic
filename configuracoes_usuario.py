@@ -1,4 +1,5 @@
 from tratamento import tratarNum, tratarOpcao
+from alterar_informacoes_pessoais import telaAlterarInformacoesPessoais
 
 import os
 
@@ -26,9 +27,26 @@ def telaConfiguracoesUsuario():
         return_tratamento = tratarOpcao(resp, 1,2)
 
         if return_tratamento == True:
-            return resp
+
+            controleConfiguracoesUsuario(resp)
+
+    telaConfiguracoesUsuario()
 
 
-def controleConfiguracoesUsuario():
+def controleConfiguracoesUsuario(opcao):
 
-    pass
+    '''
+    FUNÇÃO RESPONSÁVEL PELO CONTROLE DE FLUXO
+    DAS TELAS DO USUÁRIO
+
+    ====================================================
+
+    CASO A OPÇÃO ESCOLHIDA SEJA A Nº 01
+    O USUÁRIO SERÁ REDIRECIONADO PARA A TELA ALTERAR INFORMAÇÕES PESSOAIS
+
+    CASO A OPÇÃO ESCOLHIDA SEJA A Nº 02
+    O USUÁRIO SERÁ REDIRECIONADO PARA A TELA ENCERRAR CONTA
+    '''
+
+    if opcao == 1:
+        return_informacoes_pessoais = 

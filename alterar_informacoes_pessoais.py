@@ -2,7 +2,7 @@ from tratamento import tratarNum, tratarOpcao
 
 import os
 
-def alterarInformacoesPessoais():
+def telaAlterarInformacoesPessoais():
 
     os.system('cls')
 
