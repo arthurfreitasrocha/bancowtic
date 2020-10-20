@@ -2,16 +2,16 @@ from tratamento import tratarNum, tratarOpcao
 
 import os
 
-def telaConfiguracoesUsuario():
+def alterarInformacoesPessoais():
 
     os.system('cls')
 
-    print('\nBANCO WTIC - [CONFIGURAÇÕES DO USUÁRIO]\n')
+    print('\nBANCO WTIC - [CONFIGURAÇÕES DO USUÁRIO -> ALTERAR INFORMAÇÕES PESSOAIS]\n')
 
     print('POR FAVOR SELECIONE UMA OPÇÃO OU DIGITE "sair" PARA SAIR\n')
 
-    print('(01) ALTERAR INFORMAÇÕES PESSOAIS')
-    print('(02) ENCERRAR CONTA\n')
+    print('(01) ALTERAR LOGIN')
+    print('(02) ALTERAR SENHA\n')
 
     resp = input('>>> ')
 
@@ -29,6 +29,6 @@ def telaConfiguracoesUsuario():
             return resp
 
 
-def controleConfiguracoesUsuario():
+def controleAlterarInformacoesPessoais():
 
     pass

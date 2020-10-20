@@ -162,8 +162,8 @@ def cadastrarUsuario(nome, idade, login, senha):
     pasta_usuario = capturarDiretorioUsuario(login)
     os.mkdir(pasta_usuario)
 
-    informacoes_genericas = ['nome', 'idade', 'login', 'senha']
-    informacoes_usuario = [nome, idade, login, senha]
+    informacoes_genericas = ['nome', 'idade', 'saldo', 'extrato', 'login', 'senha']
+    informacoes_usuario = [nome, idade, '0', '', login, senha]
 
     contador = 0
     for informacao in informacoes_usuario:
