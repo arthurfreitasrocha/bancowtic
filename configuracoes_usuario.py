@@ -4,7 +4,7 @@ from alterar_informacoes_pessoais import telaAlterarInformacoesPessoais
 
 import os
 
-def telaConfiguracoesUsuario():
+def telaConfiguracoesUsuario(login):
 
     os.system('cls')
 
@@ -29,12 +29,12 @@ def telaConfiguracoesUsuario():
 
         if return_tratamento == True:
 
-            controleConfiguracoesUsuario(resp)
+            controleConfiguracoesUsuario(resp, login)
 
     telaConfiguracoesUsuario()
 
 
-def controleConfiguracoesUsuario(opcao):
+def controleConfiguracoesUsuario(opcao, login):
 
     '''
     FUNÇÃO RESPONSÁVEL PELO CONTROLE DE FLUXO
@@ -50,7 +50,9 @@ def controleConfiguracoesUsuario(opcao):
     '''
 
     if opcao == 1:
-        return_informacoes_pessoais = telaAlterarInformacoesPessoais()
+        telaAlterarInformacoesPessoais(login)
+
+        telaConfiguracoesUsuario(login)
 
     elif opcao == 2:
-        return_encerrar_conta = telaEncerrarConta()
+        telaEncerrarConta(login)

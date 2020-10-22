@@ -34,7 +34,7 @@ def telaEncerrarConta():
 
     else:
 
-        print('LOGIN E/OU SENHA INVÁLIDO(S)!\n')
+        print('\nLOGIN E/OU SENHA INVÁLIDO(S)!\n')
         os.system('pause')
 
         return False
@@ -64,11 +64,32 @@ def controleEncerrarConta(login):
 
         if return_resp == True:
 
-            diretorio_usuario = capturarDiretorioUsuario(login)
-            os.removedirs(diretorio_usuario)
+            if resp == 's':
 
-            print('CONTA EXCLUÍDA COM SUCESSO.\n')
-            os.system('pause')
+                diretorio_usuario = capturarDiretorioUsuario(login)
 
-            sairBanco()
+                '''
+                APAGA OS ARQUIVOS DENTRO DA PASTA DO USUÁRIO
+                E EM SEGUIDA, APAGA SUA PASTA
+                '''
+                nome_arquivos = ['extrato.txt', 'idade.txt', 'login.txt', 'nome.txt', 'saldo.txt', 'senha.txt']
+
+                for nome_arquivo in nome_arquivos:
+
+                    arquivo = f'{diretorio_usuario}\\{nome_arquivo}'
+                    os.remove(arquivo)
+
+                os.removedirs(diretorio_usuario)
+
+                print('\nCONTA EXCLUÍDA COM SUCESSO.')
+
+                sairBanco()
+
+
+            elif resp == 'n':
+
+                print('\nOPERAÇÃO CANCELADA\n')
+                os.system('pause')
+
+                return False
 

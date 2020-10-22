@@ -41,12 +41,12 @@ def telaUsuario(login):
 
         if return_tratamento == True:
 
-            controleUsuario(resp)
+            controleUsuario(resp, login)
 
     telaUsuario(login)
 
 
-def controleUsuario(opcao):
+def controleUsuario(opcao, login):
 
     '''
     FUNÇÃO RESPONSÁVEL PELO CONTROLE DE FLUXO
@@ -62,7 +62,7 @@ def controleUsuario(opcao):
     '''
 
     if opcao == 1:
-        return_operacoes = telaOperacoesBancarias()
+        return_operacoes = telaOperacoesBancarias(login)
 
     elif opcao == 2:
-        return_configuracoes = telaConfiguracoesUsuario()
+        return_configuracoes = telaConfiguracoesUsuario(login)
