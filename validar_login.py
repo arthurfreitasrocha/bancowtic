@@ -2,7 +2,26 @@ from diretorio_atual import capturarDiretorioAtual
 
 import os
 
-def validarLogin(login, senha):
+def validarLogin(**kws):
+
+    primeiro_acesso = kws.get('primeiro_acesso')
+
+    os.system('cls')
+
+    print('\nBANCO WTIC - [VALIDAÇÃO]\n')
+
+    print('POR FAVOR INFORME OS DADOS ABAIXO OU DIGITE "sair" PARA SAIR\n')
+
+    login = input('LOGIN: ')
+
+    if login.lower() == 'sair':
+        return False
+
+    senha = input('SENHA: ')
+
+    if senha.lower() == 'sair':
+        return False
+
 
     '''
     FAZ A VALIDAÇÃO DO LOGIN
@@ -44,10 +63,40 @@ def validarLogin(login, senha):
         BANCO DE DADOS OCORRERÁ A FALHA NO LOGIN
         '''
         if login_arquivo == login and senha_arquivo == senha:
-            return True
+
+            print('\nAUTENTICAÇÃO REALIZADA COM SUCESSO!\n')
+            os.system('pause')
+
+            if primeiro_acesso == True:
+
+                informacoes = [True, login]
+                return informacoes
+
+            else:
+                return True
+        
+        else:
+
+            print('\nFALHA NA AUTENTICAÇÃO\n')
+            os.system('pause')
+
+            if primeiro_acesso == True:
+
+                informacoes = [False, login]
+                return informacoes
+            
+            else:
+                return False
+
+    else:
+
+        print('\nFALHA NA AUTENTICAÇÃO\n')
+        os.system('pause')
+
+        if primeiro_acesso == True:
+
+            informacoes = [False, login]
+            return informacoes
         
         else:
             return False
-
-    else:
-        return False

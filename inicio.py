@@ -1,4 +1,4 @@
-from login import telaLogin
+from validar_login import validarLogin
 from cadastro import telaCadastro
 
 from usuario import telaUsuario
@@ -64,7 +64,7 @@ def controleInicio(resp):
 
     if resp == 1:
 
-        return_login = telaLogin()
+        return_login = validarLogin(primeiro_acesso=True)
         print(return_login)
 
         if return_login[0] == True:

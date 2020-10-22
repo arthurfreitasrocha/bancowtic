@@ -11,7 +11,7 @@ def telaEncerrarConta():
 
     os.system('cls')
 
-    print('\nBANCO WTIC - [CONFIGURAÇÕES DO USUÁRIO -> ENCERRAR CONTA]\n')
+    print('\nBANCO WTIC - [TELA USUÁRIO -> CONFIGURAÇÕES DO USUÁRIO -> ENCERRAR CONTA]\n')
 
     print('PARA CONFIRMAR A EXCLUSÃO DE SUA CONTA DIGITE SEU LOGIN E SUA SENHA\n\
         OU DIGITE "sair" PARA SAIR.\n')

@@ -6,34 +6,14 @@ import os
 
 def telaAlterarInformacoesPessoais(login):
 
-    os.system('cls')
-
-    print('\nBANCO WTIC - [CONFIGURAÇÕES DO USUÁRIO -> ALTERAR INFORMAÇÕES PESSOAIS]\n')
-
-    print('INFORME SEU LOGIN E SENHA\n')
-
-
-    login = input('LOGIN: ')
-
-    if login.lower() == 'sair':
-        return False
-
-    senha = input('SENHA: ')
-
-    if senha.lower() == 'sair':
-        return False
-
-
-    return_validacao = validarLogin(login, senha)
+    return_validacao = validarLogin()
 
     if return_validacao == True:
-        controleAlterarInformacoesPessoais(login)
+        return_controle = controleAlterarInformacoesPessoais(login)
+
+        return return_controle
 
     else:
-
-        print('\nLOGIN E/OU SENHA INVÁLIDO(S)!\n')
-        os.system('pause')
-
         return False
 
 
@@ -41,7 +21,7 @@ def controleAlterarInformacoesPessoais(login):
 
     os.system('cls')
 
-    print('\nBANCO WTIC - [CONFIGURAÇÕES DO USUÁRIO -> ALTERAR INFORMAÇÕES PESSOAIS]\n')
+    print('\nBANCO WTIC - [TELA USUÁRIO -> CONFIGURAÇÕES DO USUÁRIO -> ALTERAR INFORMAÇÕES PESSOAIS]\n')
 
     print('POR FAVOR SELECIONE UMA OPÇÃO OU DIGITE "sair" PARA SAIR\n')
 
@@ -64,10 +44,20 @@ def controleAlterarInformacoesPessoais(login):
         if return_tratamento == True:
 
             if resp == 1:
-                mudarLogin(login)
+                return_login = mudarLogin(login)
+
+                if return_login == False:
+                    controleAlterarInformacoesPessoais(login)
+
+                return True
 
             elif resp == 2:
-                mudarSenha(login)
+                return_senha = mudarSenha(login)
+
+                if return_senha == False:
+                    controleAlterarInformacoesPessoais(login)
+
+                return True
 
 
 def mudarLogin(login):
@@ -76,9 +66,12 @@ def mudarLogin(login):
 
     print('\nBANCO WTIC - [CONFIGURAÇÕES DO USUÁRIO -> ALTERAR INFORMAÇÕES PESSOAIS -> ALTERAR LOGIN]\n')
 
-    print('POR FAVOR INFORME SEU [NOVO] LOGIN\n')
+    print('POR FAVOR INFORME SEU [NOVO] LOGIN OU DIGITE "sair" PARA SAIR\n')
 
     novo_login = input('>>> ')
+
+    if novo_login.lower() == 'sair':
+        return False
 
 
     '''
@@ -114,9 +107,12 @@ def mudarSenha(login):
 
     print('\nBANCO WTIC - [CONFIGURAÇÕES DO USUÁRIO -> ALTERAR INFORMAÇÕES PESSOAIS -> ALTERAR SENHA]\n')
 
-    print('POR FAVOR INFORME SUA [NOVA] SENHA\n')
+    print('POR FAVOR INFORME SUA [NOVA] SENHA OU DIGITE "sair" PARA SAIR\n')
 
     nova_senha = input('>>> ')
+
+    if nova_senha.lower() == 'sair':
+        return False
 
 
     '''

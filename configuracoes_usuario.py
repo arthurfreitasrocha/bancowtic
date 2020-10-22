@@ -8,7 +8,7 @@ def telaConfiguracoesUsuario(login):
 
     os.system('cls')
 
-    print('\nBANCO WTIC - [CONFIGURAÇÕES DO USUÁRIO]\n')
+    print('\nBANCO WTIC - [TELA USUÁRIO -> CONFIGURAÇÕES DO USUÁRIO]\n')
 
     print('POR FAVOR SELECIONE UMA OPÇÃO OU DIGITE "sair" PARA SAIR\n')
 
@@ -28,10 +28,9 @@ def telaConfiguracoesUsuario(login):
         return_tratamento = tratarOpcao(resp, 1,2)
 
         if return_tratamento == True:
-
             controleConfiguracoesUsuario(resp, login)
 
-    telaConfiguracoesUsuario()
+    telaConfiguracoesUsuario(login)
 
 
 def controleConfiguracoesUsuario(opcao, login):

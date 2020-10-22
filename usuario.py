@@ -64,5 +64,11 @@ def controleUsuario(opcao, login):
     if opcao == 1:
         return_operacoes = telaOperacoesBancarias(login)
 
+        if return_operacoes == False:
+            telaUsuario(login)
+
     elif opcao == 2:
         return_configuracoes = telaConfiguracoesUsuario(login)
+
+        if return_configuracoes == False:
+            telaUsuario(login)
