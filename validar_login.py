@@ -2,7 +2,7 @@ from diretorio_atual import capturarDiretorioAtual
 
 import os
 
-def validarLogin(**kws):
+def telaValidarLogin(**kws):
 
     primeiro_acesso = kws.get('primeiro_acesso')
 
@@ -23,10 +23,20 @@ def validarLogin(**kws):
         return False
 
 
+    return_validar_login = controleValidarLogin(login, senha, primeiro_acesso=True)
+
+
+def controleValidarLogin(login, senha, **kws):
+
     '''
     FAZ A VALIDAÇÃO DO LOGIN
     '''
 
+    primeiro_acesso = kws.get('primeiro_acesso')
+
+    '''
+    CAPTURA O DIRETÓRIO DO USUÁRIO
+    '''
     diretorio_atual = capturarDiretorioAtual()
     diretorio_usuarios = f'{diretorio_atual}\\usuarios'
 

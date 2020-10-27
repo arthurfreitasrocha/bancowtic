@@ -65,7 +65,6 @@ def controleInicio(resp):
     if resp == 1:
 
         return_login = validarLogin(primeiro_acesso=True)
-        print(return_login)
 
         if return_login[0] == True:
 
@@ -76,6 +75,8 @@ def controleInicio(resp):
     elif resp == 2:
 
         return_cadastro = telaCadastro()
+        print(return_cadastro)
+        os.system('pause')
 
         if return_cadastro == True:
             telaInicio()

@@ -17,44 +17,16 @@ def telaCadastro():
     print('POR FAVOR INFORME OS DADOS ABAIXO OU DIGITE "sair" PARA SAIR\n')
 
 
-    nome = input('NOME: ')
+    return_capturar_informacoes = capturarInformacoesCadastro()
 
-    if nome.lower() == 'sair':
+    if return_capturar_informacoes == False:
         return False
 
-    else:
-        return_validacao = validarInformacoes('nome', nome)
 
-        if return_validacao == False:
-            telaCadastro()
-
-    idade = input('IDADE: ')
-
-    if idade.lower() == 'sair':
-        return False
-
-    else:
-        return_validacao = validarInformacoes('idade', idade)
-
-        if return_validacao == False:
-            telaCadastro()
-
-    login = input('CPF (será seu login): ')
-
-    if login.lower() == 'sair':
-        return False
-    
-    else:
-        return_validacao = validarInformacoes('cpf', login)
-
-        if return_validacao == False:
-            telaCadastro()
-
-    senha = input('SENHA: ')
-
-    if senha.lower() == 'sair':
-        return False
-
+    nome = return_capturar_informacoes[0]
+    idade = return_capturar_informacoes[1]
+    login = return_capturar_informacoes[2]
+    senha = return_capturar_informacoes[3]
 
     return_confirmar = telaConfirmarInformacoes('cadastro', login, senha, nome=nome, idade=idade)
 
@@ -77,38 +49,55 @@ def telaCadastro():
         telaCadastro()
 
 
-def validarInformacoes(tipo_informacao, informacao):
+def capturarInformacoesCadastro():
 
-    return_informacao = False
+    '''
+    CAPTURA AS INFORMAÇÕES NECESSÁRIAS PARA
+    SER REALIZADO O CADASTRO DO USUÁRIO
+    '''
 
-    if tipo_informacao == 'nome':
-        return_informacao = tratarAlpha(informacao)
+    nome = input('NOME: ')
 
-        return return_informacao
-
-
-    elif tipo_informacao == 'idade':
-        return_informacao = tratarNum(informacao)
-
-        if return_informacao == True:
-
-            informacao = int(informacao)
-
-            if informacao < 18:
-                return_informacao = False
-
-
-    elif tipo_informacao == 'cpf':
-        return_informacao = tratarCPF(informacao)
-
-        return return_informacao
-
-
-    if return_informacao == False:
-        print('\nENTRADA INVÁLIADA!\n')
-        os.system('pause')
-
+    if nome.lower() == 'sair':
         return False
+
+    else:
+        return_validacao = tratarAlpha(nome)
+
+        if return_validacao == False:
+            telaCadastro()
+
+    idade = input('IDADE: ')
+
+    if idade.lower() == 'sair':
+        return False
+
+    else:
+        return_validacao = tratarNum(idade, idade=True)
+
+        if return_validacao == False:
+            telaCadastro()
+
+    login = input('CPF (será seu login): ')
+
+    if login.lower() == 'sair':
+        return False
+    
+    else:
+        return_validacao = tratarCPF(login)
+
+        if return_validacao == False:
+            telaCadastro()
+
+    senha = input('SENHA: ')
+
+    if senha.lower() == 'sair':
+        return False
+
+
+    informacoes = [nome, idade, login, senha]
+
+    return informacoes
 
 
 def cadastrarUsuario(nome, idade, login, senha):

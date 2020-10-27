@@ -49,9 +49,14 @@ def controleConfiguracoesUsuario(opcao, login):
     '''
 
     if opcao == 1:
-        telaAlterarInformacoesPessoais(login)
+        return_alterar_informacoes = telaAlterarInformacoesPessoais(login)
+
+        if return_alterar_informacoes == True:
+            return True
 
         telaConfiguracoesUsuario(login)
 
     elif opcao == 2:
         telaEncerrarConta(login)
+
+        telaConfiguracoesUsuario(login)

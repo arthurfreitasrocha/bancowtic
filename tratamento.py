@@ -16,17 +16,33 @@ def tratarAlpha(alpha):
     return True
 
 
-def tratarNum(num):
+def tratarNum(num, **kws):
 
     '''
     VERIFICA SE O VALOR INFORMADO É NUMÉRICO E RETORNA ESSA VALIDAÇÃO COM TRUE OU FALSE
+
+    **kws
+    idade
     '''
+
+    idade = kws.get('idade')
 
     if num.isnumeric() == False:
         print('\nPOR FAVOR INFORME UM VALOR NUMÉRICO!\n')
         os.system('pause')
 
         return False
+
+
+    if idade == True:
+
+        num = int(num)
+
+        if num < 18:
+            print('\nIDADE INVÁLIDA\n')
+            os.system('pause')
+
+            return False
 
     return True
 
