@@ -1,10 +1,14 @@
-from encerrar_conta import telaEncerrarConta
-from tratamento import tratarNum, tratarOpcao
-from alterar_informacoes_pessoais import telaAlterarInformacoesPessoais
+from .Tela_EncerrarConta import telaEncerrarConta
+from .TratamentoErros import tratarNum, tratarOpcao
+from .Tela_AlterarInformacoesPessoais import telaAlterarInformacoesPessoais
 
 import os
 
 def telaConfiguracoesUsuario(login):
+
+    '''
+    EXIBE A TELA DAS CONFIGURAÇÕES DO USUÁRIO
+    '''
 
     os.system('cls')
 
@@ -16,9 +20,13 @@ def telaConfiguracoesUsuario(login):
     print('(02) ENCERRAR CONTA\n')
 
     resp = input('>>> ')
+    print(resp)
 
     if resp.lower() == 'sair':
-        return False
+        print('entrou no if')
+        os.system('pause')
+        informacoes = [False, login]
+        return informacoes
 
     return_tratamento = tratarNum(resp)
 
@@ -51,10 +59,7 @@ def controleConfiguracoesUsuario(opcao, login):
     if opcao == 1:
         return_alterar_informacoes = telaAlterarInformacoesPessoais(login)
 
-        if return_alterar_informacoes == True:
-            return True
-
-        telaConfiguracoesUsuario(login)
+        telaConfiguracoesUsuario(return_alterar_informacoes)
 
     elif opcao == 2:
         telaEncerrarConta(login)

@@ -1,23 +1,19 @@
-from diretorio_atual import capturarDiretorioAtual, capturarDiretorioUsuario
-from validar_login import validarLogin
-from tratamento import tratarNum, tratarOpcao
+from Tela_ValidarLogin import telaValidarLogin
+from .TratamentoErros import tratarNum, tratarOpcao
 
 import os
 
 def telaAlterarInformacoesPessoais(login):
 
-    return_validacao = validarLogin()
+    '''
+    EXIBE A TELA PARA ALTERAR AS INFORMAÇÕES PESSOAIS
+    '''
 
-    if return_validacao == True:
-        return_controle = controleAlterarInformacoesPessoais(login)
+    return_validacao = telaValidarLogin()
 
-        return return_controle
-
-    else:
+    if return_validacao == False:
         return False
 
-
-def controleAlterarInformacoesPessoais(login):
 
     os.system('cls')
 
@@ -33,31 +29,52 @@ def controleAlterarInformacoesPessoais(login):
     if resp.lower() == 'sair':
         return False
 
+
+    return_alterar_informacoes = controleAlterarInformacoesPessoais(resp, login)
+
+    if return_alterar_informacoes == False:
+        return False
+
+
+def controleAlterarInformacoesPessoais(resp, login):
+
+    '''
+    FUNÇÃO RESPONSÁVEL PELO CONTROLE DE FLUXO
+    DA OPÇÃO ESCOLHIDA PELO USUÁRIO
+
+    ====================================================
+
+    CASO A OPÇÃO ESCOLHIDA SEJA A Nº 01
+    O USUÁRIO SERÁ REDIRECIONADO PARA A TELA ALTERAR LOGIN
+
+    CASO A OPÇÃO ESCOLHIDA SEJA A Nº 02
+    O USUÁRIO SERÁ REDIRECIONADO PARA A TELA ALTERAR SENHA
+    '''
+
     return_tratamento = tratarNum(resp)
 
-
     if return_tratamento == True:
+
 
         resp = int(resp)
         return_tratamento = tratarOpcao(resp, 1,2)
 
         if return_tratamento == True:
 
+
             if resp == 1:
                 return_login = mudarLogin(login)
 
                 if return_login == False:
-                    controleAlterarInformacoesPessoais(login)
+                    return False
 
-                return True
+                return return_login
 
             elif resp == 2:
                 return_senha = mudarSenha(login)
 
                 if return_senha == False:
-                    controleAlterarInformacoesPessoais(login)
-
-                return True
+                    return False
 
 
 def mudarLogin(login):
@@ -80,15 +97,13 @@ def mudarLogin(login):
     O NOME DA MESMA É O LOGIN DO USUÁRIO
     '''
 
-    pasta_antiga = capturarDiretorioUsuario(login)
+    pasta_antiga = f'Banco de Dados\\Usuarios\\{login}'
+    pasta_nova = f'Banco de Dados\\Usuarios\\{novo_login}'
 
-    nova_pasta = capturarDiretorioAtual()
-    nova_pasta = f'{nova_pasta}\\usuarios\\{novo_login}'
-
-    os.rename(pasta_antiga, nova_pasta)
+    os.rename(pasta_antiga, pasta_nova)
 
 
-    arquivo_login = f'{nova_pasta}\\login.txt'
+    arquivo_login = f'{pasta_nova}\\login.txt'
 
     arquivo = open(arquivo_login, 'w')
     arquivo.write(novo_login)
@@ -98,7 +113,7 @@ def mudarLogin(login):
     print('\nLOGIN ALTERADO COM SUCESSO!\n')
     os.system('pause')
 
-    return True
+    return novo_login
 
 
 def mudarSenha(login):
@@ -116,15 +131,9 @@ def mudarSenha(login):
 
 
     '''
-    CAPTURA O ENDEREÇO DA PASTA DO USUÁRIO
-    '''
-    pasta_usuario = capturarDiretorioUsuario(login)
-
-
-    '''
     ALTERA A SENHA DO USUÁRIO
     '''
-    arquivo_senha = f'{pasta_usuario}\\senha.txt'
+    arquivo_senha = f'Banco de Dados\\Usuarios\\{login}\\senha.txt'
 
     arquivo = open(arquivo_senha, 'w')
     arquivo.write(nova_senha)
@@ -133,5 +142,3 @@ def mudarSenha(login):
 
     print('\nSENHA ALTERADA COM SUCESSO!\n')
     os.system('pause')
-
-    return True

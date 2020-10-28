@@ -4,7 +4,7 @@ from Tela_Cadastro import telaCadastro
 from Usuario.Tela_Usuario import telaUsuario
 
 from Usuario.TratamentoErros import tratarNum, tratarOpcao
-from Tela_Sair import sairBanco
+from Usuario.Tela_Sair import sairBanco
 
 import os
 

@@ -1,23 +1,24 @@
-from informacoes_usuario import capturarInformacoesUsuario
-from diretorio_atual import capturarDiretorioUsuario
+from .InformacoesUsuario import capturarInformacoesUsuario
 
-from validar_login import validarLogin
-from tratamento import tratarAlpha, tratarOpcao
-from sair import sairBanco
+from Tela_ValidarLogin import telaValidarLogin
+from .TratamentoErros import tratarAlpha, tratarOpcao
+from .Tela_Sair import sairBanco
 
 import os
 
 def telaEncerrarConta(login):
 
+    '''
+    EXIBE A TELA PARA ENCERRAR A CONTA
+    '''
+
     os.system('cls')
 
-    return_validacao = validarLogin()
+    return_validacao = telaValidarLogin()
 
-    if return_validacao == True:
-        controleEncerrarConta(login)
+    if return_validacao == False:
+        return False
 
-
-def controleEncerrarConta(login):
 
     informacoes_usuario = capturarInformacoesUsuario(login)
 
@@ -32,18 +33,36 @@ def controleEncerrarConta(login):
 
     resp = input('>>> ')
 
+    if resp.lower() == 'sair':
+        return False
+
+
+    controleEncerrarConta(resp, login)
+
+    return False
+
+
+def controleEncerrarConta(resp, login):
+
+    '''
+    FUNÇÃO RESPONSÁVEL POR EXCLUIR A CONTA DO USUÁRIO
+    '''
+
     return_resp = tratarAlpha(resp)
 
-
     if return_resp == True:
+
 
         return_resp = tratarOpcao(resp, 's', 'n')
 
         if return_resp == True:
 
+            '''
+            APAGA A CONTA DO USUÁRIO SE resp == 's'
+            '''
             if resp == 's':
 
-                diretorio_usuario = capturarDiretorioUsuario(login)
+                diretorio_usuario = f'Banco de Dados\\Usuarios\\{login}'
 
                 '''
                 APAGA OS ARQUIVOS DENTRO DA PASTA DO USUÁRIO

@@ -2,6 +2,10 @@ import os
 
 def telaValidarLogin(**kws):
 
+    '''
+    FAZ A VALIDAÇÃO DO LOGIN
+    '''
+
     primeiro_acesso = kws.get('primeiro_acesso')
 
     os.system('cls')

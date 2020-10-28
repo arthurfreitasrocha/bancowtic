@@ -1,9 +1,9 @@
-#from .Tela_OperacoesBancarias import telaOperacoesBancarias
-#from .Tela_ConfiguracoesUsuario import telaConfiguracoesUsuario
+from .Tela_OperacoesBancarias import telaOperacoesBancarias
+from .Tela_ConfiguracoesUsuario import telaConfiguracoesUsuario
 
-#from ..Sistema.InformacoesUsuario import capturarInformacoesUsuario
-#from .TratamentoErros import tratarNum, tratarOpcao
-#from ..Tela_Sair import sairBanco
+from .InformacoesUsuario import capturarInformacoesUsuario
+from .TratamentoErros import tratarNum, tratarOpcao
+from .Tela_Sair import sairBanco
 
 import os
 
@@ -61,7 +61,7 @@ def controleUsuario(opcao, login):
     '''
 
     if opcao == 1:
-        return_operacoes = telaOperacoesBancarias(login)
+        return_operacoes = telaOperacoesBancarias()
 
         if return_operacoes == False:
             telaUsuario(login)
@@ -69,5 +69,6 @@ def controleUsuario(opcao, login):
     elif opcao == 2:
         return_configuracoes = telaConfiguracoesUsuario(login)
 
-        if return_configuracoes == False:
+        if return_configuracoes[0] == False:
+            login = return_configuracoes[1]
             telaUsuario(login)
