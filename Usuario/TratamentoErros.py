@@ -21,8 +21,7 @@ def tratarNum(num, **kws):
     '''
     VERIFICA SE O VALOR INFORMADO É NUMÉRICO E RETORNA ESSA VALIDAÇÃO COM TRUE OU FALSE
 
-    **kws
-    idade
+    **kws: idade
     '''
 
     idade = kws.get('idade')

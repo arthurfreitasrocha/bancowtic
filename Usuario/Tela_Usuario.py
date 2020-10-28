@@ -1,9 +1,9 @@
-from operacoes_bancarias import telaOperacoesBancarias
-from configuracoes_usuario import telaConfiguracoesUsuario
+from .Tela_OperacoesBancarias import telaOperacoesBancarias
+from .Tela_ConfiguracoesUsuario import telaConfiguracoesUsuario
 
-from informacoes_usuario import capturarInformacoesUsuario
-from tratamento import tratarNum, tratarOpcao
-from sair import sairBanco
+from ..Sistema.InformacoesUsuario import capturarInformacoesUsuario
+from .TratamentoErros import tratarNum, tratarOpcao
+from ..Tela_Sair import sairBanco
 
 import os
 
@@ -12,7 +12,6 @@ def telaUsuario(login):
     informacoes_usuario = capturarInformacoesUsuario(login)
 
     nome = informacoes_usuario[0]
-    idade = informacoes_usuario[1]
 
     os.system('cls')
 

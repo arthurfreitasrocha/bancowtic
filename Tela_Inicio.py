@@ -1,10 +1,10 @@
-from validar_login import validarLogin
-from cadastro import telaCadastro
+from Tela_ValidarLogin import telaValidarLogin
+from Tela_Cadastro import telaCadastro
 
-from usuario import telaUsuario
+from Usuario.Tela_Usuario import telaUsuario
 
-from tratamento import tratarNum, tratarOpcao
-from sair import sairBanco
+from Usuario.TratamentoErros import tratarNum, tratarOpcao
+from Tela_Sair import sairBanco
 
 import os
 
@@ -64,7 +64,7 @@ def controleInicio(resp):
 
     if resp == 1:
 
-        return_login = validarLogin(primeiro_acesso=True)
+        return_login = telaValidarLogin(primeiro_acesso=True)
 
         if return_login[0] == True:
 

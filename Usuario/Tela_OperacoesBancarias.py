@@ -1,4 +1,4 @@
-from tratamento import tratarNum, tratarOpcao
+from .TratamentoErros import tratarNum, tratarOpcao
 
 import os
 

@@ -1,4 +1,16 @@
-from diretorio_atual import capturarDiretorioUsuario
+import os
+
+def capturarDiretorioUsuario(login):
+
+    '''
+    CAPTURA O DIRETÓRIO DO USUÁRIO
+    '''
+
+    diretorio_atual = os.path.dirname(os.path.realpath(__file__))
+    diretorio_usuario = f'{diretorio_atual}\\usuarios\\{login}'
+
+    return diretorio_usuario
+
 
 def capturarInformacoesUsuario(login):
 

@@ -1,5 +1,3 @@
-from diretorio_atual import capturarDiretorioAtual
-
 import os
 
 def telaValidarLogin(**kws):
@@ -23,7 +21,12 @@ def telaValidarLogin(**kws):
         return False
 
 
-    return_validar_login = controleValidarLogin(login, senha, primeiro_acesso=True)
+    '''
+    PARTE LÓGICA DA VALIDAÇÃO DO LOGIN
+    '''
+    return_validar_login = controleValidarLogin(login, senha, primeiro_acesso=primeiro_acesso)
+
+    return return_validar_login
 
 
 def controleValidarLogin(login, senha, **kws):
@@ -34,21 +37,15 @@ def controleValidarLogin(login, senha, **kws):
 
     primeiro_acesso = kws.get('primeiro_acesso')
 
-    '''
-    CAPTURA O DIRETÓRIO DO USUÁRIO
-    '''
-    diretorio_atual = capturarDiretorioAtual()
-    diretorio_usuarios = f'{diretorio_atual}\\usuarios'
 
-    usuarios = os.listdir(diretorio_usuarios)
-
+    todos_usuarios = os.listdir('Banco de Dados\\Usuarios')
 
     '''
     VERIFICA SE O USUÁRIO EXISTE BASEADO NA PASTA DO MESMO, OU SEJA,
     CASO A PASTA DO USUÁRIO EXISTIR, O USUÁRIO EXISTE
     '''
     usuario_existente = False
-    for usuario in usuarios:
+    for usuario in todos_usuarios:
 
         if usuario == login:
             usuario_existente = True
@@ -56,8 +53,8 @@ def controleValidarLogin(login, senha, **kws):
 
     if usuario_existente == True:
 
-        endereco_login = f'{diretorio_usuarios}\\{login}\\login.txt'
-        endereco_senha = f'{diretorio_usuarios}\\{login}\\senha.txt'
+        endereco_login = f'Banco de Dados\\Usuarios\\{login}\\login.txt'
+        endereco_senha = f'Banco de Dados\\Usuarios\\{login}\\senha.txt'
         
         arquivo = open(endereco_login, 'r')
         login_arquivo = arquivo.read()
