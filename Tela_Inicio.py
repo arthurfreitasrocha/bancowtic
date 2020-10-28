@@ -74,11 +74,6 @@ def controleInicio(resp):
 
     elif resp == 2:
 
-        return_cadastro = telaCadastro()
-        print(return_cadastro)
-        os.system('pause')
-
-        if return_cadastro == True:
-            telaInicio()
+        telaCadastro()
 
         telaInicio()

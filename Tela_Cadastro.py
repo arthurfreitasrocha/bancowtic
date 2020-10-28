@@ -1,6 +1,4 @@
 from Tela_ConfirmarInformacoes import telaConfirmarInformacoes
-from Sistema.InformacoesUsuario import capturarDiretorioUsuario
-from Usuario.TratamentoErros import tratarAlpha, tratarNum, tratarCPF
 
 import os
 
@@ -20,25 +18,34 @@ def telaCadastro():
     '''
     CAPTURA AS INFORMAÇÕES
     '''
-    nome = ''
-    idade = ''
-    login = ''
-    senha = ''
 
-    informacoes_usuario = [nome, idade, login, senha]
+    variaveis_informacoes = []
 
-    for informacao in informacoes_usuario:
+    for informacao in ['nome', 'idade', 'login', 'senha']:
 
-        informacao = input(f'{informacao}: ')
+        nova_informacao = input(f'{informacao.upper()}: ')
 
-        if informacao.islower() == 'sair':
-            break
+        if nova_informacao.lower() == 'sair':
+            return False
+
+        variaveis_informacoes.append(nova_informacao)
+
+
+    '''
+    ATRIBUI A INFORMAÇÃO DIGITADA PELO USUÁRIO
+    AS VARIÁVEIS
+    '''
+    nome = variaveis_informacoes[0]
+    idade = variaveis_informacoes[1]
+    login = variaveis_informacoes[2]
+    senha = variaveis_informacoes[3]
 
 
     '''
     CONFIRMA AS INFORMAÇÕES DIGITADAS PELO USUÁRIO
     '''
     return_confirmar = telaConfirmarInformacoes(nome, idade, login, senha)
+
 
     if return_confirmar == True:
 
@@ -47,8 +54,6 @@ def telaCadastro():
         if return_cadastro == True:
             print('\nCADASTRO REALIZADO COM SUCESSO!\n')
             os.system('pause')
-
-            return True
 
         elif return_cadastro == False:
             print('\nVERIFIQUE SEUS DADOS E TENTE NOVAMENTE\n')
@@ -66,35 +71,16 @@ def cadastrarUsuario(nome, idade, login, senha):
     CRIA O BANCO DE DADOS DO USUÁRIO
     '''
 
-    diretorio_atual = capturarDiretorioAtual()
-
-    '''
-    VERIFICA SE A PASTA "usuarios" JA FOI CRIADA
-    '''
-
-    arquivos_no_diretorio = os.listdir(diretorio_atual)
-
-    pasta_usuario_existe = False
-    for nome_arquivos in arquivos_no_diretorio:
-
-        if nome_arquivos == 'usuarios':
-            pasta_usuario_existe = True
-
-    if pasta_usuario_existe == False:
-        os.mkdir('usuarios')
-
-
-    diretorio_pasta_usuarios = f'{diretorio_atual}\\usuarios'
-    usuarios = os.listdir(diretorio_pasta_usuarios)
-
 
     '''
     VERIFICA SE O USUÁRIO QUE ESTÁ TENTANDO SE CADASTRAR
     JÁ EXISTE NO BANCO DE DADOS
     '''
 
+    todos_usuarios = os.listdir('Banco de Dados\\Usuarios')
+
     usuario_existente = False
-    for usuario in usuarios:
+    for usuario in todos_usuarios:
 
         if usuario == login:
             usuario_existente = True
@@ -108,20 +94,16 @@ def cadastrarUsuario(nome, idade, login, senha):
     INFORMAÇÕES ESCRITAS EM VÁRIOS BLOCOS DE NOTAS
     '''
 
-    pasta_usuario = capturarDiretorioUsuario(login)
-    os.mkdir(pasta_usuario)
-
-    informacoes_genericas = ['nome', 'idade', 'saldo', 'extrato', 'login', 'senha']
-    informacoes_usuario = [nome, idade, '0', '', login, senha]
+    os.mkdir(f'Banco de Dados\\Usuarios\\{login}')
+    variaveis_informacoes = [nome, idade, '0', '', login, senha]
 
     contador = 0
-    for informacao in informacoes_usuario:
+    for informacao in ['nome', 'idade', 'saldo', 'extrato', 'login', 'senha']:
 
-        diretorio_arquivos = capturarDiretorioUsuario(login)
-        diretorio_arquivos += f'\\{informacoes_genericas[contador]}.txt' # 'C:\Users\arthu\Documents\GitHub\bancowtic\usuarios\123\nome.txt'
+        diretorio_usuario = f'Banco de Dados\\Usuarios\\{login}\\{informacao}.txt'
 
-        arquivo = open(diretorio_arquivos, 'w')
-        arquivo.write(informacao)
+        arquivo = open(diretorio_usuario, 'w')
+        arquivo.write(variaveis_informacoes[contador])
         arquivo.close()
 
         contador += 1

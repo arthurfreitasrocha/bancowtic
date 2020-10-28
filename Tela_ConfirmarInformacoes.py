@@ -13,7 +13,7 @@ def telaConfirmarInformacoes(nome, idade, login, senha):
 
     print('\nDESEJA PROSSEGUIR COM AS INFORMAÇÕES ABAIXO? [S/N]\n')
 
-    print(f'NOME: {nome}')
+    print(f'NOME: {nome.title()}')
     print(f'IDADE: {idade}')
     print(f'LOGIN: {login}')
     print(f'SENHA: {senha}\n')

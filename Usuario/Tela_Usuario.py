@@ -1,9 +1,9 @@
-from .Tela_OperacoesBancarias import telaOperacoesBancarias
-from .Tela_ConfiguracoesUsuario import telaConfiguracoesUsuario
+#from .Tela_OperacoesBancarias import telaOperacoesBancarias
+#from .Tela_ConfiguracoesUsuario import telaConfiguracoesUsuario
 
-from ..Sistema.InformacoesUsuario import capturarInformacoesUsuario
-from .TratamentoErros import tratarNum, tratarOpcao
-from ..Tela_Sair import sairBanco
+#from ..Sistema.InformacoesUsuario import capturarInformacoesUsuario
+#from .TratamentoErros import tratarNum, tratarOpcao
+#from ..Tela_Sair import sairBanco
 
 import os
 
