@@ -7,6 +7,7 @@ from .Tela_Sair import sairBanco
 
 import os
 
+
 def telaUsuario(login):
 
     informacoes_usuario = capturarInformacoesUsuario(login)
