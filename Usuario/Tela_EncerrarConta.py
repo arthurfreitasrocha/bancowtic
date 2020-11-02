@@ -1,8 +1,8 @@
-from .InformacoesUsuario import capturarInformacoesUsuario
+from Usuario.InformacoesUsuario import capturarInformacoesUsuario
 
 from Tela_ValidarLogin import telaValidarLogin
-from .TratamentoErros import tratarAlpha, tratarOpcao
-from .Tela_Sair import sairBanco
+from Usuario.TratamentoErros import tratarAlpha, tratarOpcao
+from Usuario.Tela_Sair import sairBanco
 
 import os
 

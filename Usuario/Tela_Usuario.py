@@ -1,9 +1,9 @@
-from .Tela_OperacoesBancarias import telaOperacoesBancarias
-from .Tela_ConfiguracoesUsuario import telaConfiguracoesUsuario
+from Usuario.Tela_OperacoesBancarias import telaOperacoesBancarias
+from Usuario.Tela_ConfiguracoesUsuario import telaConfiguracoesUsuario
 
-from .InformacoesUsuario import capturarInformacoesUsuario
-from .TratamentoErros import tratarNum, tratarOpcao
-from .Tela_Sair import sairBanco
+from Usuario.InformacoesUsuario import capturarInformacoesUsuario
+from Usuario.TratamentoErros import tratarNum, tratarOpcao
+from Usuario.Tela_Sair import sairBanco
 
 import os
 
@@ -62,7 +62,7 @@ def controleUsuario(opcao, login):
     '''
 
     if opcao == 1:
-        return_operacoes = telaOperacoesBancarias()
+        return_operacoes = telaOperacoesBancarias(login)
 
         if return_operacoes == False:
             telaUsuario(login)

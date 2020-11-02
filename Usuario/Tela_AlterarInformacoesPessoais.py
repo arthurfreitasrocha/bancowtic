@@ -1,5 +1,5 @@
 from Tela_ValidarLogin import telaValidarLogin
-from .TratamentoErros import tratarNum, tratarOpcao
+from Usuario.TratamentoErros import tratarNum, tratarOpcao
 
 import os
 

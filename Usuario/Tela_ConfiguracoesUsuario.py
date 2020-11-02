@@ -1,6 +1,6 @@
-from .Tela_EncerrarConta import telaEncerrarConta
-from .TratamentoErros import tratarNum, tratarOpcao
-from .Tela_AlterarInformacoesPessoais import telaAlterarInformacoesPessoais
+from Usuario.Tela_EncerrarConta import telaEncerrarConta
+from Usuario.TratamentoErros import tratarNum, tratarOpcao
+from Usuario.Tela_AlterarInformacoesPessoais import telaAlterarInformacoesPessoais
 
 import os
 
@@ -23,8 +23,6 @@ def telaConfiguracoesUsuario(login):
     print(resp)
 
     if resp.lower() == 'sair':
-        print('entrou no if')
-        os.system('pause')
         informacoes = [False, login]
         return informacoes
 

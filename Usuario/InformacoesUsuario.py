@@ -1,3 +1,5 @@
+
+
 def capturarInformacoesUsuario(login):
 
     '''
