@@ -36,7 +36,7 @@ def telaEncerrarConta(login):
     if resp.lower() == 'sair':
         return False
 
-
+    print(resp, login)
     controleEncerrarConta(resp, login)
 
     return False

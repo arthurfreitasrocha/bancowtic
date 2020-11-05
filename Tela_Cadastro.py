@@ -97,7 +97,7 @@ def cadastrarUsuario(nome, idade, login, senha):
     os.mkdir(f'Banco de Dados\\Usuarios\\{login}')
     variaveis_informacoes = [nome, idade, '0', '', login, senha]
 
-    contador = 0
+    contador = 0 #1
     for informacao in ['nome', 'idade', 'saldo', 'extrato', 'login', 'senha']:
 
         diretorio_usuario = f'Banco de Dados\\Usuarios\\{login}\\{informacao}.txt'

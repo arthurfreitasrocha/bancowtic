@@ -63,6 +63,7 @@ def controleAlterarInformacoesPessoais(resp, login):
 
 
             if resp == 1:
+                print(login)
                 return_login = mudarLogin(login)
 
                 if return_login == False:
