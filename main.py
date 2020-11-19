@@ -1,3 +1,4 @@
+# NOVO COMENTÁRIO
 from Tela_Inicio import telaInicio
 
 import os
